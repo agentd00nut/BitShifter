@@ -2,12 +2,19 @@
 
 include_once 'BitShifter.php';
 
+$bs = new BitShifter(array("young","old","tall","short"));
+$bs->shift("young");
+$bs2 = new BitShifter(array("young","old","tall","short"));
+$bs2->shiftByArray(["young","short"]);
+echo $bs->add($bs2)->getValue()."\n";;
+die();
+
 // Setup a BS (lol) with an array of values
 $bs = new BitShifter(array("a","b","c","d"));
 
 // Get the value for the first element in the array.
-$x = $bs->shift("a")->getValue();
-echo "a: $x\n"; // X: 1
+$x = $bs->shift("c")->shift("d")->getValue();
+echo "a: $x\n"; // X: 1.
 
 // Tell us the elements of the array that belong to this value.
 // More than one element can be returned if the value is a combination of bits... IE. "3" will return the first and second
@@ -20,7 +27,7 @@ print_r(  $bs->convertValue($x) ) ; // ['a']
 echo "All the entries that match the value of 7\n";
 print_r( $bs->convertValue(7) ); // ['c','b','a']
 
-
+die();
 
 // Create another BS.
 $bs2 = new BitShifter(array("a","b","c","d"));

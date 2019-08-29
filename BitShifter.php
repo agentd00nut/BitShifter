@@ -8,6 +8,8 @@ class BitShifter{
 	public function __construct($map){
 		$this->resetValue();
 		$this->setMap($map);
+
+		return $this;
 	}
 
 	public function __toString(){
